@@ -2,7 +2,7 @@ import fileinput
 import re
 
 
-#Dirty as hell search-replace loop without regex. But it works!
+#Dirty search-replace loop without regex. But it works!
 #Would probably benefit from some clean regex code > to do list
  
 for line in fileinput.input():

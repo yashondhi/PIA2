@@ -35,7 +35,7 @@ def read(filename):
     #print "Median Absolute Deviation of BL for", gene + ":", mad        #just
     #print                                                               #testing
     #print "Standard Deviation of the Mean of BL for", gene + ":", std   #some
-    #print                                                               #shit
+    #print                                                               #stuff
 
     numstd = int(sys.argv[2])*mad #JPM: Change mad to std to switch back to standard deviations
     for i in tipbl:

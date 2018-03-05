@@ -1,7 +1,7 @@
 aalength="30"			#minimum aminoacid sequence length
 search_type="single"	#single or set
 gene="r_opsin"			#gene(set) name
-evalue="0.0000000001"	#E-value threshold for BLAST search
+evalue="0.00000000000000000001"	#E-value threshold for BLAST search
 blasthits="100"			#Number of BLAST hits to retain for the analysis
 
 for file in *.fasta ; do

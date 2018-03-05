@@ -712,7 +712,7 @@ if($lines < 1){
 #	system "/home/PIA/galaxy-dist/tools/pia/seqConverterG.pl -daligned.fas -ope -Oaligned.phy";
 	print "Placing Hits on gene tree with Maximum Likelihood using Evolutionary Placement Algorithm (EPA) of RAxML...\n";
 	system "raxmlHPC -version";
-	system "raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre -n $thisgene -T 11";
+	system "raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre -n $thisgene -T 8";
 }
 
 #RAxML does not use outgroup information for EPA. Use phyutility to reroot using $outgroup
