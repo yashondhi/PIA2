@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict;
 use Bio::Perl;
 use Bio::DB::GenBank;
@@ -12,10 +12,10 @@ use FastaDb;
 use FastqDb;
 
 #The directory where PIA is located must match this:
-my $PIADIR = "/home/vader/apps/pia/";
+my $PIADIR = "/ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia";
 
 #The directory where precalculated genetrees and LIT_1.1.txt file are located must match this:
-my $DATADIR = "/home/vader/apps/pia/LIT_1.1/";
+my $DATADIR = "/ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia/LIT_1.1/";
 
 #test tab delim output
 system "touch allhits.tab";
@@ -693,6 +693,7 @@ if($lines < 1){
 	elsif($align eq "mafft") {
         	system "cat $newgenes $path.fas > toalign.fas";
 		print "Print Using: MAFFT v7.032b";
+		print 'test123';
         	system "mafft --quiet --auto toalign.fas > aligned.fas";
 	}
 	elsif($align eq "mafftprofile") {
@@ -707,18 +708,21 @@ if($lines < 1){
 	}
 
 	#convert to phylip format, uses seqConverter.pl
+	print "test-seq";
 	my $command = $PIADIR."seqConverterG.pl -daligned.fas -ope -Oaligned.phy";
 	system $command;
-#	system "/home/PIA/galaxy-dist/tools/pia/seqConverterG.pl -daligned.fas -ope -Oaligned.phy";
+#	system "/ufrc/kawahara/yashsondhi/pia2/galaxy-dist/tools/pia/seqConverterG.pl -daligned.fas -ope -Oaligned.phy";
 	print "Placing Hits on gene tree with Maximum Likelihood using Evolutionary Placement Algorithm (EPA) of RAxML...\n";
-	system "raxmlHPC -version";
-	system "raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre -n $thisgene -T 8";
+	system "/ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia/seqConverterG.pl -daligned.fas -ope -Oaligned.phy";	
+	system "raxmlHPC ";
+	system"raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t /ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia/LIT_1.1/rtrans/r_opsin_20_rtrans.tre  -n r_opsin_1241"
+	#system "raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre -n $thisgene";
 }
 
 #RAxML does not use outgroup information for EPA. Use phyutility to reroot using $outgroup
 my @outgroups = split(',', $outgroup);
 print "Using phyutility to root with OUTGROUPS determined from midpoint rooting\n: @outgroups\n";
-system "/home/vader/apps/pia/phyutility/phyutility -rr -in RAxML_labelledTree.".$thisgene." -out RootedTree.".$thisgene." -names @outgroups";
+system "phyutility -rr -in RAxML_labelledTree.".$thisgene." -out RootedTree.".$thisgene." -names @outgroups";
 #Now make tab delimited file to use in tab2trees
 #open treefile to read tree line
 #system "cat RAxML_info.$thisgene";

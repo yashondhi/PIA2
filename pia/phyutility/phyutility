@@ -1,1 +1,3 @@
-java -Xmx12g -jar /home/vader/apps/pia/phyutility/phyutility.jar $*
+#!/bin/bash
+
+java -jar phyutility.jar "$@"
