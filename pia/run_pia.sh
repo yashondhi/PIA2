@@ -1,7 +1,7 @@
 #!/bin/bash
 aalength="30"			#minimum aminoacid sequence length
 search_type="single"	#single or set
-gene="r_opsin"			#gene(set) name
+gene="trp"			#gene(set) name
 evalue="0.00000000000000000001"	#E-value threshold for BLAST search
 blasthits="100"			#Number of BLAST hits to retain for the analysis
 
