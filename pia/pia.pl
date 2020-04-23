@@ -715,7 +715,7 @@ if($lines < 1){
 	print "Placing Hits on gene tree with Maximum Likelihood using Evolutionary Placement Algorithm (EPA) of RAxML...\n";
 	system "/ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia/seqConverterG.pl -daligned.fas -ope -Oaligned.phy";	
 	system "raxmlHPC ";
-	system"raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t /ufrc/kawahara/yashsondhi/pia2_implementation/PIA2/pia/LIT_1.1/rtrans/r_opsin_20_rtrans.tre  -n r_opsin_1241"
+	system"raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre  -n $thisgene"
 	#system "raxmlHPC -f v -s aligned.phy -m PROTGAMMALG -t $path.tre -n $thisgene";
 }
 
